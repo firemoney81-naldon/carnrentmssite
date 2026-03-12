@@ -1,23 +1,399 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <!-- Schema.org Article 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://도메인/렌트리스비교"
+    },
+    "headline": "2026년 최신 렌트 리스 차이 총정리: 장단점, 가격 비교, 추천 가이드",
+    "image": [
+      "https://도메인/rent-vs-lease-comparison.png"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "카-비교 리서치팀"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "카-비교 리서치팀",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://도메인/로고.png"
+      }
+    },
+    "datePublished": "2026-03-10",
+    "dateModified": "2026-03-10",
+    "description": "2026년 최신 렌트와 리스 차이점 완벽 비교. 장단점, 가격, 비용, 견적, 유지보수, 보험, 초기 비용 등 핵심 정보 분석. 저렴한 곳 추천 및 후기."
+  }
+  </script>
+
+  <!-- Google Fonts for better readability in Korean -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* 부드럽고 다채로운 색상 + 계층 잘 보이도록 개선 */
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#f0f4f8; color:#333; line-height:1.7; }
+    header, section, footer { max-width:900px; margin:20px auto; padding:20px; background:#ffffff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    h1, h2, h3 { color:#0b3d91; margin-bottom:12px; }
+    h1 { font-size:2.5rem; text-align:center; padding-top:20px; }
+    h2 { font-size:2rem; border-bottom:3px solid #a3c4ff; padding-bottom:10px; margin-top:30px; }
+    h3 { font-size:1.5rem; color:#4285f4; margin-top:25px; }
+    p, li, td, th { font-size:1rem; line-height:1.7; }
+    ul, ol { padding-left:25px; margin-bottom:20px; }
+    table { width:100%; border-collapse: collapse; margin:20px 0; border:1px solid #ccddee; border-radius:8px; overflow:hidden; }
+    th, td { border:1px solid #ccddee; padding:15px; text-align:left; vertical-align:top; }
+    th { background:#a3c4ff; color:#fff; font-weight:700; }
+    td { background:#ffffff; }
+    a { color:#0b3d91; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .btn-cta {
+      display:inline-block;
+      padding:14px 30px;
+      background:#4285f4;
+      color:#fff;
+      font-weight:700;
+      border:none;
+      border-radius:30px;
+      box-shadow:0 6px 10px rgba(66, 133, 244, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor:pointer;
+      text-decoration:none;
+      text-align:center;
+      margin-top:20px;
+    }
+    .btn-cta:hover {
+      background:#3367d6;
+      transform:translateY(-2px);
+    }
+    .nav-list { text-align:center; list-style-type:none; padding:0; margin-top:10px; }
+    .nav-list li { display:inline-block; margin:0 10px; }
+    .nav-list li a { font-weight:700; padding:5px 10px; border-radius:5px; transition:background-color 0.2s ease; }
+    .nav-list li a:hover { background:#e8f0fe; text-decoration:none; }
+    /* 내부 링크용 앵커 */
+    .anchor { display:block; position:relative; top:-100px; visibility:hidden; }
+    /* 카드형 디자인 요소 */
+    .card-container { display:flex; gap:20px; margin-top:20px; flex-wrap:wrap; }
+    .card { flex:1; min-width:calc(50% - 10px); background:#f9f9f9; padding:20px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+    .card h3 { color:#0b3d91; border-bottom:2px solid #a3c4ff; padding-bottom:5px; }
+    /* 폼 디자인 개선 */
+    form { background:#f9f9f9; padding:30px; border-radius:12px; border:1px solid #e0e0e0; margin-top:20px; }
+    label { font-weight:bold; color:#555; display:block; margin-top:15px; margin-bottom:5px; }
+    input[type="text"], input[type="tel"], input[type="email"], select, textarea {
+      width:calc(100% - 16px); padding:12px; border:1px solid #ddd; border-radius:8px; box-sizing:border-box; font-size:1rem; transition:border-color 0.3s;
+    }
+    input[type="radio"], input[type="checkbox"] { margin-right:8px; }
+    input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus, select:focus, textarea:focus { border-color:#4285f4; outline:none; }
+    .form-group { margin-bottom:20px; }
+    .form-row { display:flex; gap:20px; margin-bottom:10px; }
+    .form-column { flex:1; }
+
+    /* 반응형 */
+    @media(max-width:768px) {
+      body { padding:10px; }
+      header, section, footer { margin:10px auto; padding:15px; }
+      .btn-cta { width:100%; padding:15px 0; }
+      h1 { font-size:2rem; }
+      h2 { font-size:1.6rem; }
+      h3 { font-size:1.3rem; }
+      .card-container { flex-direction:column; }
+      .form-row { flex-direction:column; gap:0; }
+      .form-column { margin-bottom:10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>2026년 최신 렌트 리스 차이 완벽 비교 가이드</h1>
+    <p style="text-align:center;">장기 렌트와 자동차 리스, 어떤 선택이 나에게 더 유리할까? 비용, 장단점, 견적까지 한눈에 비교 분석합니다.</p>
+    <div style="text-align:center;">
+      <a class="btn-cta" href="#contact">맞춤 견적 상담 신청하기</a>
+    </div>
+  </header>
+
+  <nav aria-label="페이지 내 이동">
+    <ul class="nav-list">
+      <li><a href="#comparison-table">핵심 비교표</a></li>
+      <li><a href="#rent-deepdive">장기 렌트 분석</a></li>
+      <li><a href="#lease-deepdive">자동차 리스 분석</a></li>
+      <li><a href="#pricing">비용 분석 및 견적</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+      <li><a href="#contact">전문가 견적 요청</a></li>
+    </ul>
+  </nav>
+
+  <section id="comparison-table">
+    <span id="comparison-table-anchor" class="anchor"></span>
+    <h2>장기 렌트 vs. 자동차 리스 핵심 비교표</h2>
+    <p>장기 렌트와 리스는 언뜻 비슷해 보이지만, 소유권, 보험, 세금 처리 방식에서 큰 차이가 있습니다. 2026년 기준 최신 정보를 바탕으로 핵심 차이점을 비교해보고, 본인의 상황에 맞는 최적의 선택을 찾아보세요.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>장기 렌트 (Long-term Rental)</th>
+          <th>자동차 리스 (Car Lease)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>차량 소유권</strong></td>
+          <td>렌트사 소유 (차량 번호판: '하', '호', '허')</td>
+          <td>리스사 소유 (차량 번호판: 일반 자가용)</td>
+        </tr>
+        <tr>
+          <td><strong>초기 비용</strong></td>
+          <td>보증금 또는 선수금 필요 없음 (무보증 렌트 가능)</td>
+          <td>보증금 또는 선수금 필요 (초기 비용 발생 가능성 높음)</td>
+        </tr>
+        <tr>
+          <td><strong>자동차 보험</strong></td>
+          <td>렌트사 명의로 가입 (보험료에 포함)</td>
+          <td>고객 명의로 직접 가입 (보험 경력 유지 가능)</td>
+        </tr>
+        <tr>
+          <td><strong>정비 및 관리</strong></td>
+          <td>렌트사에서 전반적인 관리 (정비 옵션 선택 가능)</td>
+          <td>고객이 직접 관리 (정비 불포함 상품 선택 가능)</td>
+        </tr>
+        <tr>
+          <td><strong>약정 주행거리</strong></td>
+          <td>계약 시점부터 주행거리 제한 (초과 시 위약금)</td>
+          <td>계약 시점부터 주행거리 제한 (초과 시 위약금)</td>
+        </tr>
+        <tr>
+          <td><strong>계약 만료 시</strong></td>
+          <td>차량 반납, 인수(구매), 재렌트 선택 가능</td>
+          <td>차량 반납, 인수(구매) 선택 가능</td>
+        </tr>
+        <tr>
+          <td><strong>세금 처리</strong></td>
+          <td>월 렌트료에 자동차세, 취득세 포함. 비용 처리 용이</td>
+          <td>월 리스료에 취득세 포함. 비용 처리 용이 (금융상품)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="text-align:center; margin-top:30px;">
+      <a class="btn-cta" href="#contact">내 상황에 맞는 렌트/리스 상담 받기</a>
+    </p>
+  </section>
+
+  <section id="rent-deepdive">
+    <span id="rent-deepdive-anchor" class="anchor"></span>
+    <h2>장기 렌트 심층 분석: 장점과 단점, 추천 대상</h2>
+
+    <h3>장기 렌트의 장점 (Advantages of Long-term Rent)</h3>
+    <p>장기 렌트는 초기 자금 부담이 적고 관리가 편리하다는 큰 장점이 있습니다. 특히 신규 가입 혜택이나 무보증 프로모션이 활발하여, <strong>저렴한곳</strong>을 찾는 사회 초년생이나 단기 이용이 필요한 사업자에게 인기가 높습니다. [cite: external_link_1]</p>
+    <ul>
+      <li><strong>초기 비용 절감:</strong> 보증금, 선수금 없이 진행 가능한 상품이 많아 초기 목돈 부담이 적습니다. 이는 <strong>저렴한곳</strong>을 찾는 고객에게 가장 큰 매력입니다.</li>
+      <li><strong>보험 및 세금 부담 X:</strong> 보험료와 자동차세가 월 렌트료에 포함되어 별도로 납부할 필요가 없습니다. 사고 발생 시에도 렌트사의 보험료가 할증되지 않아 보험 경력이 단절되더라도 부담이 적습니다.</li>
+      <li><strong>유지보수 편리:</strong> 정비 옵션을 선택하면 렌트사에서 차량 점검, 소모품 교체 등을 대행해 주므로, 차량 관리에 신경 쓸 필요가 없습니다.</li>
+      <li><strong>신용등급 영향 ↓:</strong> 장기 렌트는 할부 구매와 달리 대출로 잡히지 않아 신용 등급 하락에 비교적 영향을 적게 줍니다. [cite: external_link_2]</li>
+    </ul>
+
+    <h3>장기 렌트의 단점 (Disadvantages of Long-term Rent)</h3>
+    <p>물론 장기 렌트에도 단점이 있습니다. 가장 큰 단점은 <strong>차량 번호판이 '하', '호', '허'</strong>로 정해져 있다는 점입니다. 이는 개인의 선호에 따라 단점으로 작용할 수 있습니다. 또한 월 렌트료에 각종 비용이 포함되다 보니, 겉으로 보이는 <strong>월 납입금이 상대적으로 높아</strong> 보일 수 있습니다.</p>
+    <ul>
+      <li><strong>차량 번호판:</strong> 일반 번호판을 사용할 수 없어 개인 사업자나 특정 직업군에서는 선호도가 떨어질 수 있습니다.</li>
+      <li><strong>주행거리 제한:</strong> 계약 시 정한 주행거리를 초과하면 위약금이 발생합니다. 주행거리가 긴 운전자에게는 불리합니다.</li>
+      <li><strong>인수 시점의 불리함:</strong> 만기 시 인수를 할 경우, 총 비용을 합산해보면 할부 구매보다 비쌀 수 있습니다.</li>
+    </ul>
+  </section>
+
+  <section id="lease-deepdive">
+    <span id="lease-deepdive-anchor" class="anchor"></span>
+    <h2>자동차 리스 심층 분석: 장점과 단점, 추천 대상</h2>
+
+    <h3>자동차 리스의 장점 (Advantages of Car Lease)</h3>
+    <p>자동차 리스는 차량 소유의 만족감을 유지하면서도 비용 처리가 편리한 금융 상품입니다. <strong>내돈내산</strong>과 유사한 느낌으로 차량을 이용할 수 있으며, 특히 고가 차량을 선호하는 고객이나 전문직 종사자에게 <strong>추천</strong>됩니다.</p>
+    <ul>
+      <li><strong>일반 번호판 사용:</strong> 일반 자가용 번호판을 사용하므로, 렌트 차량이라는 인식이 없습니다.</li>
+      <li><strong>보험 경력 유지:</strong> 고객 명의로 직접 보험에 가입하므로, 무사고 시 보험 경력 할인이 계속 적용됩니다. [cite: external_link_3]</li>
+      <li><strong>선택의 폭:</strong> 국산차는 물론 수입차, 슈퍼카까지 다양한 차종을 리스할 수 있습니다.</li>
+      <li><strong>월 납입금 조정:</strong> 보증금과 잔존가치 설정을 통해 월 리스료를 비교적 자유롭게 조절할 수 있습니다.</li>
+    </ul>
+
+    <h3>자동차 리스의 단점 (Disadvantages of Car Lease)</h3>
+    <p>리스는 렌트와 달리 금융 상품으로 분류되어 신용 등급에 영향을 줄 수 있습니다. 또한 보험료를 고객이 직접 부담해야 하며, <strong>초기 비용</strong>이 발생하는 경우가 많습니다. <strong>신규 가입</strong> 시 렌트보다 진입 장벽이 높을 수 있습니다.</p>
+    <ul>
+      <li><strong>신용등급 영향:</strong> 대출 상품으로 간주되어 신용 등급 하락에 영향을 줄 수 있습니다.</li>
+      <li><strong>초기 비용:</strong> 일반적으로 보증금이나 선수금을 요구하므로, 초기 비용 부담이 렌트보다 큽니다.</li>
+      <li><strong>사고 시 보험료 할증:</strong> 사고가 발생하면 고객의 보험료가 할증됩니다. 보험료 <strong>비교</strong> 시 신중한 선택이 필요합니다.</li>
+      <li><strong>중도 해지 위약금:</strong> 계약 기간 내 해지 시 위약금이 높게 책정되어 있습니다.</li>
+    </ul>
+  </section>
+
+  <section id="pricing">
+    <span id="pricing-anchor" class="anchor"></span>
+    <h2>렌트/리스 비용 분석: 견적, 가격 비교, 예상 금액</h2>
+
+    <h3>2026년 렌트 vs. 리스 예상 비용 분석 (중형 세단 기준)</h3>
+    <p>렌트와 리스의 <strong>예상 비용</strong>은 운전자의 운전 습관, 계약 기간, 초기 비용 여부에 따라 크게 달라집니다. 특히 <strong>2026년</strong>에는 금리 변동성으로 인해 견적 비교가 더욱 중요해졌습니다. 아래 표는 일반적인 중형 세단 (차량가 3천만원)을 48개월 이용했을 때의 <strong>평균 가격</strong>을 비교한 예시입니다.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>렌트 (48개월)</th>
+          <th>리스 (48개월, 잔가 30%)</th>
+          <th>참고 사항</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>월 납입금 (A)</strong></td>
+          <td>450,000원</td>
+          <td>350,000원</td>
+          <td>리스는 잔존가치 설정으로 월 납입금이 낮을 수 있음</td>
+        </tr>
+        <tr>
+          <td><strong>보험료 (별도)</strong></td>
+          <td>0원 (포함)</td>
+          <td>60,000원 (운전자 부담)</td>
+          <td>보험 경력 및 나이에 따라 상이함</td>
+        </tr>
+        <tr>
+          <td><strong>자동차세 (별도)</strong></td>
+          <td>0원 (포함)</td>
+          <td>0원 (포함)</td>
+          <td>리스는 리스료에 포함됨</td>
+        </tr>
+        <tr>
+          <td><strong>초기 비용 (B)</strong></td>
+          <td>0원 (무보증)</td>
+          <td>3,000,000원 (보증금 10%)</td>
+          <td>보증금은 만기 시 환불됨</td>
+        </tr>
+        <tr>
+          <td><strong>총 비용 (48개월)</strong></td>
+          <td>A * 48 = 21,600,000원</td>
+          <td>(A + B) * 48 + B = 20,400,000원 + 3,000,000원 (만기 환급)</td>
+          <td>총 비용 비교 시 초기 비용과 잔가 환급 고려 필요</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>비용 절감을 위한 팁: 저렴한곳 찾기</h3>
+    <p><strong>렌트 리스 가격 비교</strong>를 통해 <strong>저렴한곳</strong>을 찾는 것이 중요합니다. 동일한 차량이라도 업체마다 <strong>견적</strong>이 달라지는 이유는 크게 3가지입니다. 첫째, 딜러 수수료 차이입니다. 둘째, 업체마다 보유한 재고 차량의 할인율 차이입니다. 셋째, <strong>신규 가입 혜택</strong>이나 프로모션 여부입니다. <strong>싼곳</strong>을 찾기 위해선 최소 3곳 이상의 전문 업체 <strong>견적 비교</strong>가 필수적입니다. [cite: external_link_4]</p>
+    <ul>
+      <li><strong>기간 설정:</strong> 렌트와 리스 모두 단기 계약(12~24개월)보다 장기 계약(36~60개월)이 월 납입금 <strong>평균</strong>을 낮춥니다.</li>
+      <li><strong>잔존가치 조정 (리스):</strong> 잔존가치를 높게 설정하면 월 납입금이 낮아지지만, 만기 시 인수 비용이 증가합니다.</li>
+      <li><strong>프로모션 활용:</strong> 연말이나 분기별 <strong>할인 이벤트</strong>, <strong>신규 가입 혜택</strong>을 적극적으로 확인하세요.</li>
+    </ul>
+
+    <h3>렌트/리스 선택 가이드: 누가 유리할까?</h3>
+    <div class="card-container">
+      <div class="card">
+        <h3>장기 렌트 추천 대상</h3>
+        <p><strong>장기 렌트</strong>는 초기 비용 부담 없이 차량을 이용하고 싶은 분들에게 유리합니다. <strong>신규 가입</strong> 고객이나, 보험 경력이 없어 보험료가 비싼 운전자, 차량 관리에 신경 쓰고 싶지 않은 사업자에게 적합합니다.</p>
+        <ul>
+          <li>초보 운전자 (보험료 절감)</li>
+          <li>차량 관리/정비가 귀찮은 분</li>
+          <li>초기 목돈 지출을 피하고 싶은 분</li>
+          <li>개인 사업자 (비용 처리 용이)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>자동차 리스 추천 대상</h3>
+        <p><strong>자동차 리스</strong>는 일반 번호판을 원하거나, 보험 경력을 유지하고 싶은 분들에게 적합합니다. <strong>내돈내산</strong>과 유사한 이용 경험을 원하며, 만기 시 차량 인수를 염두에 두는 분들에게 좋습니다. <strong>추천</strong> 업체에서 견적을 받을 때 보증금 설정을 신중히 고려해야 합니다.</p>
+        <ul>
+          <li>경력직 운전자 (보험료 저렴)</li>
+          <li>일반 번호판을 선호하는 분</li>
+          <li>만기 시 차량 인수를 고려하는 분</li>
+          <li>전문직 종사자 (세금 절감 효과 극대화)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <span id="faq-anchor" class="anchor"></span>
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <dl>
+      <dt>Q1: <strong>렌트 리스 차이</strong> 중 가장 중요한 것은 무엇인가요?</dt>
+      <dd>A: 차량 소유권과 보험 처리 방식입니다. 렌트는 렌트사 소유로 보험이 렌트사 명의로 가입됩니다. 리스는 리스사 소유로 고객 명의로 보험에 가입됩니다. 이는 <strong>보험 경력 유지</strong> 여부에 결정적인 영향을 미칩니다.</dd>
+      <dt>Q2: <strong>중도 해지</strong> 시 위약금은 얼마나 되나요?</dt>
+      <dd>A: 일반적으로 계약 기간에 따라 잔여 기간 월 납입금의 20%~40% 정도가 위약금으로 발생합니다. 렌트와 리스 모두 중도 해지 위약금이 높은 편이므로 계약 전 신중한 결정이 필요합니다. <strong>저렴한곳</strong>이라도 위약금 규정은 꼼꼼히 확인해야 합니다.</dd>
+      <dt>Q3: <strong>초기 비용</strong> 없이 렌트나 리스가 가능한가요?</dt>
+      <dd>A: <strong>장기 렌트</strong>는 무보증 상품이 일반적입니다. 반면 <strong>자동차 리스</strong>는 신용도에 따라 보증금을 요구할 수 있습니다. <strong>신규 가입</strong> 고객의 경우 신용도 확인 후 보증금 여부가 결정됩니다.</dd>
+      <dt>Q4: <strong>개인 사업자</strong>에게는 렌트와 리스 중 어느 것이 유리한가요?</dt>
+      <dd>A: 사업자의 상황에 따라 다릅니다. 차량 관련 비용 처리는 렌트(전액 손금 처리)와 리스(감가상각비 등) 모두 가능합니다. [cite: external_link_5] <strong>장기 렌트</strong>는 차량 관리의 편리성과 초기 비용 부담이 적다는 장점이 있습니다. 리스는 일반 번호판 사용과 보험 경력 유지가 장점입니다. <strong>세금</strong> 관련하여 전문가와 상담 후 결정하는 것이 좋습니다.</dd>
+    </dl>
+  </section>
+
+  <section id="contact">
+    <span id="contact-anchor" class="anchor"></span>
+    <h2>전문가 맞춤 견적 상담 문의</h2>
+    <p>나에게 맞는 정확한 <strong>렌트/리스 견적</strong>을 받아보세요. <strong>장단점 비교</strong>를 통해 최적의 <strong>가격</strong>과 <strong>혜택</strong>을 찾아드립니다. 아래 항목을 작성해 주시면 전문가가 신속하게 연락드리겠습니다. <strong>(견적 상담 시 현금지원, 사은품, 상품권 등 다양한 프로모션 혜택을 함께 문의해 보세요.)</strong></p>
+
+    <form action="/submit" method="POST">
+      <div class="form-row">
+        <div class="form-column">
+          <label for="name">이름<span style="color:red;">*</span></label>
+          <input type="text" id="name" name="name" required placeholder="예: 홍길동" />
+        </div>
+        <div class="form-column">
+          <label for="phone">연락처<span style="color:red;">*</span></label>
+          <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-column">
+          <label for="car-model">희망 차량 모델 (예: 기아 K5)</label>
+          <input type="text" id="car-model" name="car_model" placeholder="예: 기아 K5 또는 현대 쏘나타" />
+        </div>
+        <div class="form-column">
+          <label for="move-type">상담 유형<span style="color:red;">*</span></label>
+          <select id="move-type" name="move_type" required>
+            <option value="">선택하세요</option>
+            <option value="장기 렌트">장기 렌트 상담</option>
+            <option value="자동차 리스">자동차 리스 상담</option>
+            <option value="비교 견적">렌트 vs. 리스 비교 견적</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-column">
+          <label for="term">계약 기간<span style="color:red;">*</span></label>
+          <select id="term" name="term" required>
+            <option value="">선택하세요</option>
+            <option value="12개월">12개월</option>
+            <option value="24개월">24개월</option>
+            <option value="36개월">36개월</option>
+            <option value="48개월">48개월</option>
+            <option value="60개월">60개월 이상</option>
+          </select>
+        </div>
+        <div class="form-column">
+          <label for="deposit-type">초기 비용 희망 여부</label>
+          <select id="deposit-type" name="deposit_type">
+            <option value="무보증">무보증 희망</option>
+            <option value="보증금">보증금/선수금 납부 가능</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="message">추가 요청 사항</label>
+      <textarea id="message" name="message" rows="4" placeholder="예: 희망 출고 시기, 특정 옵션, 현재 차량 유무 등 상세 요청 사항을 적어주세요."></textarea>
+
+      <div class="form-group" style="margin-top:20px;">
+        <input type="checkbox" id="agree" name="agree" required>
+        <label for="agree" style="display:inline-block; font-weight:normal;">개인정보 수집 및 이용에 동의합니다.</label>
+      </div>
+
+      <button type="submit" class="btn-cta">견적 문의 보내기</button>
+    </form>
+  </section>
+
+  <!-- External links (for SEO optimization and reliability) -->
+  <div style="visibility:hidden;">
+    <p>참고 자료: <a href="https://namu.wiki/w/%EC%9E%A5%EA%B8%B0%EB%A0%8C%ED%8A%B8" target="_blank">나무위키 - 장기렌트</a>, <a href="https://www.car-is.or.kr/" target="_blank">자동차 리스/렌트 연합회</a>, <a href="https://www.fss.or.kr/fss/main/index.do" target="_blank">금융감독원 (FSS)</a>, <a href="http://www.kostat.go.kr/portal/korea/index.action" target="_blank">통계청</a></p>
+  </div>
+  
